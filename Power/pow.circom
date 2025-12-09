@@ -1,7 +1,7 @@
 pragma circom 2.1.4;
 
-include "./node_modules/circomlib/circuits/multiplexer.circom";
-include "./node_modules/circomlib/circuits/comparators.circom";
+include "../node_modules/circomlib/circuits/multiplexer.circom";
+include "../node_modules/circomlib/circuits/comparators.circom";
 
 // Create a circuit which takes an input 'a',(array of length 2 ) , then  implement power modulo 
 // and return it using output 'c'.
@@ -29,7 +29,7 @@ template Pow(n) {
    }
 
    // select the power number of interest
-   component mux = multiplexer(1, n);
+   component mux = Multiplexer(1, n);
    mux.sel <== a[1];
 
    // select the power into the quin selector
@@ -40,5 +40,5 @@ template Pow(n) {
    out <== mux.out[0];
 }
 
-component main = Pow();
+component main = Pow(16);
 
